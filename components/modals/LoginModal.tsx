@@ -45,7 +45,7 @@ const LoginModal = () => {
     <Model 
         disabled={isLoading}
         isOpen={loginModal.isOpen}
-        title="login"
+        title="Login"
         actionLabel="Sign in"
         onClose={loginModal.onClose}
         onSubmit={onSubmit}

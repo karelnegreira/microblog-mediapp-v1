@@ -7,7 +7,7 @@ interface RegisterModalScore {
 }
 
 const useRegisterModal = create<RegisterModalScore>((set) => ({
-    isOpen: false, 
+    isOpen: true, 
     onOpen: () => set({isOpen: true}), 
     onClose: () => set({isOpen: false})
 }));

@@ -2,10 +2,14 @@ import React, {useCallback, useState } from 'react'
 import useLoginModal  from '../../hooks/useLoginModal'
 import Input from '../Input';
 import Model from '../Model';
+import useRegisterModal from '@/hooks/useRegisterModal';
 
 const RegisterModal = () => {
     const loginModal = useLoginModal();
+    const registerModal = useRegisterModal();
 
+    const [name, setName] = useState('');
+    const [username, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -14,15 +18,15 @@ const RegisterModal = () => {
         try {
             setIsLoading(true);
 
-            /*TODO LOGIN */
+            /*TODO register and login */
 
-            loginModal.onClose()
+            registerModal.onClose()
         } catch (error) {
             console.log(error)
         } finally {
             setIsLoading(false);
         }
-    }, [loginModal])
+    }, [registerModal])
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
@@ -30,6 +34,18 @@ const RegisterModal = () => {
                 placeholder="email"
                 onChange={(e) => setEmail(e.target.value) }
                 value={email}
+                disabled={isLoading}
+            />
+            <Input 
+                placeholder="name"
+                onChange={(e) => setName(e.target.value) }
+                value={name}
+                disabled={isLoading}
+            />
+            <Input 
+                placeholder="username"
+                onChange={(e) => setUserName(e.target.value) }
+                value={username}
                 disabled={isLoading}
             />
             <Input 
@@ -44,10 +60,10 @@ const RegisterModal = () => {
   return (
     <Model 
         disabled={isLoading}
-        isOpen={loginModal.isOpen}
-        title="login"
-        actionLabel="Sign in"
-        onClose={loginModal.onClose}
+        isOpen={registerModal.isOpen}
+        title="Create an account"
+        actionLabel="Register"
+        onClose={registerModal.onClose}
         onSubmit={onSubmit}
         body={bodyContent}
     />
