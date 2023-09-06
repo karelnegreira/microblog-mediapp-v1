@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-     <Model isOpen />
+     <Model isOpen title="test model" />
     <Layout>
       <Component {...pageProps} />
     </Layout>
