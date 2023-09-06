@@ -120,6 +120,7 @@ const Model: React.FC<ModelProps> = ({
             fullWidth 
             large 
             onClick={handleSubmit}/>
+            {footer}
         </div>
         </div>
         </div>

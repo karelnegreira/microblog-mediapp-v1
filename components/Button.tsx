@@ -14,8 +14,8 @@ const Button: React.FC<ButtonProps> = ({
     label, 
     secundary, 
     fullWidth, 
-    large, 
     onClick, 
+    large, 
     disabled, 
     outline
 }) => {
@@ -42,7 +42,7 @@ const Button: React.FC<ButtonProps> = ({
             ${outline ? 'text-white' : ''}
         `}
     >
-
+      {label}
     </button>
   )
 }
