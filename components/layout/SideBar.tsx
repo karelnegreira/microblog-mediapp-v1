@@ -23,12 +23,14 @@ const SideBar = () => {
         {
             label: 'Notification', 
             href: '/notifications', 
-            icon: BsBellFill
+            icon: BsBellFill, 
+            auth: true
         }, 
         {
             label: 'Profile', 
             href: '/users/123', 
-            icon: FaUser
+            icon: FaUser, 
+            auth: true
         }
     ]
   return (
@@ -42,13 +44,13 @@ const SideBar = () => {
                         href={item.href}
                         label={item.label}
                         icon={item.icon}
+                        auth={item.auth}
                     />
                 ))}
                 {currentUser && 
-                            ( <SidebarItem onClick={() => signOut()} icon={BiLogOut} label="logout"/>
+                    ( <SidebarItem onClick={() => signOut()} icon={BiLogOut} label="logout"/>
                 
                 )}
-               
                 <SidebarTweetButton />
             </div>
         </div>
