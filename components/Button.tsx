@@ -36,6 +36,7 @@ const Button: React.FC<ButtonProps> = ({
             ${secundary ? 'text-black' : 'text-white'}
             ${secundary ? 'border-black' : 'border-sky-500'}
             ${large ? 'text-xl' : 'text-md'}
+            ${large ? 'px-5' : 'px-4'}
             ${large ? 'py-3' : 'py-2'}
             ${outline ? 'bg-transparent' : ''}
             ${outline ? 'border-white' : ''}
