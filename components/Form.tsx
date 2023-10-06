@@ -6,6 +6,8 @@ import usePosts from "@/hooks/usePosts";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import toast from "react-hot-toast";
 import axios from "axios";
+import Button from "./Button";
+import Avatar from "./Avatar";
 
 
 interface FormProps {
@@ -41,7 +43,23 @@ const Form: React.FC<FormProps> = ({placeholder, isComment, postId}) => {
     }, [body, mutatePosts])
 
   return (
-    <div></div>
+    <div className="border-p-[1px] border-neutral-800 px-5 py-2">
+        {currentUser ?
+            ( <div className="flex flex-row gap-4">
+                    <div>
+                        <Avatar userId={currentUser?.id} />
+                    </div>
+            </div>) : ( 
+        <div className="py-8">
+            
+            <h1 className="text-white text-2xl text-center mb-4 font-bold">Let's Spread</h1>
+            <div className="flex flex-row items-center justify-center gap-6">
+                <Button label="Login  " onClick={loginModal.onOpen} />
+                <Button label="Register" onClick={registerModal.onOpen} secundary />
+            </div>
+        </div>
+        )}
+    </div>
   )
 }
 
