@@ -30,7 +30,7 @@ const Form: React.FC<FormProps> = ({placeholder, isComment, postId}) => {
         try {
             setIsLoading(true);
             await axios.post('/api/posts', { body });
-            toast.success('Tweet Created');
+            toast.success('Spread created!');
 
             setBody('');
             mutatePosts();
