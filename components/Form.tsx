@@ -49,6 +49,15 @@ const Form: React.FC<FormProps> = ({placeholder, isComment, postId}) => {
                     <div>
                         <Avatar userId={currentUser?.id} />
                     </div>
+                    <div className="w-full">
+                        <textarea 
+                            disabled={isLoading} 
+                            onChange={(e) => setBody(e.target.value)} 
+                            
+                        >
+
+                        </textarea>
+                    </div>
             </div>) : ( 
         <div className="py-8">
             
