@@ -53,10 +53,29 @@ const Form: React.FC<FormProps> = ({placeholder, isComment, postId}) => {
                         <textarea 
                             disabled={isLoading} 
                             onChange={(e) => setBody(e.target.value)} 
-                            
-                        >
-
+                            value={body}
+                            className="
+                                    disabled:opacity-80 
+                                    peer
+                                    resize-none
+                                    mt-3
+                                    w-full
+                                    bg-black 
+                                    ring-0 
+                                    outline-none 
+                                    text-[20px]
+                                    placeholder-neutral-500
+                                    text-white"
+                            placeholder={placeholder}
+                            >
                         </textarea>
+                        <hr className="opacity-0 peer-focus:opacity-100 h-[1px] w-full border-neutral-800 transition" />
+                    <div className="mt-4 flex flex-row justify-end">
+                        <Button disabled={isLoading || !body} 
+                                onClick={onSubmit} 
+                                label="Spread" 
+                        />
+                    </div>
                     </div>
             </div>) : ( 
         <div className="py-8">
