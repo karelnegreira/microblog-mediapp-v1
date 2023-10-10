@@ -4,7 +4,8 @@ import { formatDistanceToNowStrict } from "date-fns";
 import { useRouter } from "next/router";
 import { useCallback, useMemo } from "react";
 import Avatar from "../Avatar";
-import { AiOutlineHeart, AiOutlineMessage } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart, AiOutlineMessage } from "react-icons/ai";
+import useLike from "@/hooks/useLike";
 
 interface PostItemProps {
     data: Record<string, any>;
@@ -17,6 +18,7 @@ const PostItem: React.FC<PostItemProps> = ({data, userId}) => {
     const loginModel = useLoginModal();
     
     const {data: currentUser} = useCurrentUser();
+    const {hasLiked, toggleLike} = useLike({postId: data.id, userId});
 
     const goToUser = useCallback((event: any) => {
         event.stopPropagation();
@@ -32,8 +34,12 @@ const PostItem: React.FC<PostItemProps> = ({data, userId}) => {
     const onLike = useCallback((event: any) => {
         event.stopPropagation();
 
-        loginModel.onOpen();
-    }, [loginModel])
+        if (!currentUser) {
+            return loginModel.onOpen();
+        }
+
+        toggleLike();
+    }, [loginModel, currentUser, toggleLike])
 
     const createdAt = useMemo(() => {
         if (!data?.createdAt) {
@@ -42,6 +48,8 @@ const PostItem: React.FC<PostItemProps> = ({data, userId}) => {
 
         return formatDistanceToNowStrict(new Date(data.createdAt));
     }, [data?.createdAt])
+
+    const LikedIcon = hasLiked ? AiFillHeart : AiOutlineHeart;
 
 
   return (
@@ -79,9 +87,9 @@ const PostItem: React.FC<PostItemProps> = ({data, userId}) => {
                     <div 
                         onClick={onLike}
                         className="flex flex-row items-center text-neutral-500 gap-2 cursor-pointer transition hover:text-pink-700">
-                        <AiOutlineHeart size={20} />
+                        <LikedIcon color={hasLiked ? 'red': ''} size={20} />
                         <p>
-                            {data.comments?.length || 0}
+                            {data.likedIds.length}
                         </p>
                     </div>
                 </div>

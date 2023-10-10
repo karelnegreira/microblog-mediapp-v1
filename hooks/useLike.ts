@@ -20,7 +20,7 @@ const useLike = ({postId, userId}: {postId: string, userId?: string }) => {
         const list = fetchedPost?.likedIds || [];
 
         return list.includes(currentUser?.id);
-    }, [currentUser?.id, fetchedPost?.likedIds]);
+    }, [fetchedPost, currentUser]);
 
     const toggleLike = useCallback( async () => {
         if (!currentUser) {
@@ -48,8 +48,8 @@ const useLike = ({postId, userId}: {postId: string, userId?: string }) => {
 
     return {
         hasLiked, 
-        toggleLike
+        toggleLike, 
     }
-};
+}
 
 export default useLike;
