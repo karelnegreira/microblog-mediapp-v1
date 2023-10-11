@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import usePost from '@/hooks/usePost';
 import PostItem from '@/components/posts/PostItem';
 import Form from '@/components/Form';
+import CommentFeed from '@/components/posts/CommentFeed';
 
 
 
@@ -28,6 +29,8 @@ const PostView = () => {
             <Header showBackArrow label="Spread"/>
             <PostItem data={fetchedPost} />
             <Form postId={postId as string} isComment placeholder="Spread it out" />
+            
+            <CommentFeed comments={fetchedPost?.comments} />
         </>
     );
 }
