@@ -13,8 +13,8 @@ import usePost from "@/hooks/usePost";
 
 interface FormProps {
     placeholder: string;
-    isComment: boolean;
-    postId: string;
+    isComment?: boolean;
+    postId?: string;
 }
 
 const Form: React.FC<FormProps> = ({placeholder, isComment, postId}) => {
