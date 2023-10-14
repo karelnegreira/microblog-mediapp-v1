@@ -40,7 +40,7 @@ const RegisterModal = () => {
 
             signIn('credentials', {
                 email, 
-                password
+                password, 
             });
 
             registerModal.onClose()
