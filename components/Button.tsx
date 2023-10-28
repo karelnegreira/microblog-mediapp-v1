@@ -14,8 +14,8 @@ const Button: React.FC<ButtonProps> = ({
     label, 
     secundary, 
     fullWidth, 
-    onClick, 
     large, 
+    onClick, 
     disabled, 
     outline
 }) => {
